@@ -28,6 +28,7 @@ var CloudsGroup,cloud1,cloud2,cloud3;
 
 //localStorage['HighestScore'] = 0;
 var jumpSound, collectSound, overSound;
+localStorage["HighestScore"] = 0;
 
 function preload(){
 runImg = loadAnimation("run/0.png","run/1.png","run/2.png","run/3.png","run/4.png");
@@ -156,6 +157,10 @@ if(obstacleGroup.isTouching(player)||birdGrp.isTouching(player)){
   }
  
 }
+var high = localStorage["HighestScore"];
+text("High Score:"+high,800,50);
+  
+
 drawSprites();
 }
 function enemy(){
@@ -203,6 +208,12 @@ function reset(){
   // }
   
  //console.log(localStorage["HighestScore"]);
+
+ if(localStorage["HighestScore"]<score){
+  localStorage["HighestScore"] = score;
+}
+console.log(localStorage["HighestScore"]);
+
   score = 0;
 }
 function points(){
